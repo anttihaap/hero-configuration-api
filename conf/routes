@@ -1,0 +1,9 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# https://www.playframework.com/documentation/latest/ScalaRouting
+# ~~~~
+
+GET     /hero                       controllers.HeroController.listAllHeroes()
+POST    /hero                       controllers.HeroController.createHero()
+DELETE  /hero/:id                   controllers.HeroController.deleteHero(id)
+PUT     /hero/:id                   controllers.HeroController.updateHero(id)

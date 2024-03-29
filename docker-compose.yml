@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example_password
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+  hero-configuration-api:
+    build:
+      context: .
+    ports:
+      - "9000:9000"
+    depends_on:
+      - mongo
+    environment:
+      MONGO_URI: mongodb://root:example_password@mongo:27017
+volumes:
+  mongodb_data:
